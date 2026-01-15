@@ -20,8 +20,9 @@ class RandomizedSet:
         else:
             idx=self.map[val]
             self.arr[idx]=self.arr[-1]
-            del self.map[val]
+            
             self.map[self.arr[-1]]=idx
+            del self.map[val]
             self.arr.pop()
             return True
 
