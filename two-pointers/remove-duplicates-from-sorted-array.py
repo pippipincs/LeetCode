@@ -1,7 +1,7 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums) == 1:
-            return nums
+            return 1
         copy = nums[:]
         length = len(nums)
         i=0
