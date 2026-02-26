@@ -5,8 +5,22 @@ class Solution:
         """
         n = len(nums)
         k = k % n
-        for i in range(k):
-            prev = nums[-1]
-            for j in range(n):
-                nums[j], prev = prev, nums[j]
+
+        count = 0
+        start = 0
+
+        while count < n:
+            current = start
+            prev = nums[current]
+            while True:
+                
+                next_idx = (current + k) % n
+                nums[next_idx], prev = prev, nums[next_idx]
+                current = next_idx
+                count += 1
+
+                if current == start:
+                    break
+            start += 1
+        
          
