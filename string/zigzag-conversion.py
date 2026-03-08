@@ -1,5 +1,7 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1:
+            return s
         zigzag = collections.defaultdict(list)
         i = 0
         change = 1
