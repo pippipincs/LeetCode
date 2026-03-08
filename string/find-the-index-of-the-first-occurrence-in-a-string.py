@@ -35,7 +35,7 @@ class Solution:
             elif i != 0:
                 i = lps[i - 1]
             else:
-                i += 1
+                
                 j += 1
         return -1
 
