@@ -1,27 +1,27 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        indegree = [0] * numCourses
+        def dfs(stack, visit, i):
+            if i in stack:
+                return True
+            if i in visit:
+                return False
+            stack.add(i)
+            visit.add(i)
+            for nei in adj[i]:
+                if dfs(stack, visit, nei):
+                    return True
+            stack.remove(i)
+            return False
+
+        stack = set()
+        visit = set()
+
         adj = [[] for _ in range(numCourses)]
+
         for pre, crs in prerequisites:
             adj[crs].append(pre)
-            indegree[pre] += 1
-        from collections import deque
-
-        q = deque()
 
         for i in range(numCourses):
-            if indegree[i] == 0:
-                q.append(i)
-
-        visitedNode = 0
-
-        while q:
-            curr = q.popleft()
-            visitedNode += 1
-            for nei in adj[curr]:
-                indegree[nei] -= 1
-                if indegree[nei] == 0:
-                    q.append(nei)
-
-        return visitedNode == numCourses
-
+            if dfs(stack, visit, i):
+                return False
+        return True
