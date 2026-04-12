@@ -13,7 +13,8 @@ class Solution:
                 formed += 1
 
             while l <= r and formed == required:
-                ans = (min(ans[0], r - l + 1), l, r)
+                if (r - l + 1) < ans[0]:
+                    ans = (min(ans[0], r - l + 1), l, r)
                 c = s[l]
                 found[c] -= 1
                 if c in chars and found[c] < chars[c]:
