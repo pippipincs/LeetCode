@@ -12,6 +12,8 @@ class Solution:
             if root.right == None and root.left == None:
                 if targetSum == root.val:
                     return True
+                else:
+                    return False
             elif root.right == None and root.left != None:
                 if self.hasPathSum(root.left, targetSum - root.val):
                     return True
