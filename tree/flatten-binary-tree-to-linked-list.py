@@ -9,17 +9,17 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        def helper(root):
-            if root == None:
-                return None
-            if root.left == None and root.right == None:
-                return root
-            leftlist = helper(root.left)
-            rightlist = helper(root.right)
-            if leftlist:
-                leftlist.right = root.right
-                root.right = root.left
-                root.left = None
-            return rightlist if rightlist else leftlist
-        helper(root)
+        if not root:
+            return 
+        node = root
+        while node:
+            if node.left:
+                rightmost = node.left
+                while rightmost.right:
+                    rightmost = rightmost.right
+                rightmost.right = node.right
+                node.right = node.left
+                node.left = None
+            node = node.right
+        
         
