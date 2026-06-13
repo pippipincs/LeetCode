@@ -31,6 +31,7 @@ class NestedIterator:
         return res
     
     def hasNext(self) -> bool:
+        self.makeTopInteger()
         if self.stack:
             return True
         else:
