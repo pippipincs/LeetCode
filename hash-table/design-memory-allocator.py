@@ -1,38 +1,30 @@
 class Allocator:
 
     def __init__(self, n: int):
-        self.memory = [False] * n
-        self.blocks = collections.defaultdict(list)
+        self.memory = [0] * n
         self.n = n
 
     def allocate(self, size: int, mID: int) -> int:
-        for leftmost in range(self.n - size + 1):
-            if self.memory[leftmost]:
+        cnt = 0
+        for i in range(self.n):
+            if self.memory[i]:
+                cnt = 0
                 continue
             else:
-                available = True
-                for i in range(leftmost, leftmost + size ):
-                    if self.memory[i]:
-                        available = False
-                        break
-                if not available:
-                    continue
-                else:
-                    self.memory[leftmost : leftmost + size ] = [True] * size
-
-                    self.blocks[mID].append((leftmost, size))
-                    return leftmost
+                cnt += 1
+            if cnt == size:
+                start = i - size + 1
+                self.memory[start : i + 1] = [mID] * size
+                return start
         return -1
 
     def freeMemory(self, mID: int) -> int:
-        
-        total = 0
-        for first, size in self.blocks[mID]:
-            self.memory[first : first + size ] = [False] * size
-            total += size
-
-        self.blocks[mID] = []
-        return total
+        cnt = 0
+        for i in range(self.n):
+            if self.memory[i] == mID:
+                cnt += 1
+                self.memory[i] = 0
+        return cnt
 
 
 # Your Allocator object will be instantiated and called as such:
