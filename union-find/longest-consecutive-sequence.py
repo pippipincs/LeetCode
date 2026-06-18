@@ -1,5 +1,7 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
         num_set = set(nums)
         res = -math.inf
         for num in num_set:
