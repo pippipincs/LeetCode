@@ -1,21 +1,15 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         height = len(triangle)
-        dp = [[triangle[0][0]]]
-        last_width = 1
         for h in range(1, height):
-            width = len(triangle[h])
-            dprow = []
+            row = triangle[h]
+            last_row = triangle[h - 1]
+            width = len(row)
             for i in range(width):
-                v = triangle[h][i]
-                s = math.inf
-                for index in [i, i - 1]:
-                    if index >= 0 and index < last_width:
-                        s = min(dp[-1][index], s)
-                dprow.append(s + v)
-            dp.append(dprow)
-            last_width = len(dprow)
-
-        return min(dp[-1])
-
-
+                if i == 0:
+                    row[i] = last_row[0] + row[i]
+                elif i == width - 1:
+                    row[i] = last_row[-1] + row[i]
+                else:
+                    row[i] = min(last_row[i], last_row[i - 1]) + row[i]
+        return min(triangle[-1])
