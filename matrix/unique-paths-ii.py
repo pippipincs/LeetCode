@@ -2,7 +2,8 @@ class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         m = len(obstacleGrid)
         n = len(obstacleGrid[0])
-
+        if obstacleGrid[0][0] == 1:
+            return 0
         obstacleGrid[0][0] = 1
 
         for i in range(1, m):
