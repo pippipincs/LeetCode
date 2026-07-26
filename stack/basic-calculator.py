@@ -1,6 +1,8 @@
 class Solution:
     def calculate(self, s: str) -> int:
         def evaluate(stack):
+            if stack == [] or stack[-1] == "-":
+                stack.append(0)
             res = stack.pop()
             while stack and stack[-1] != ")":
                 sign = stack.pop()
