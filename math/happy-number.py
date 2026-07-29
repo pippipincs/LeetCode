@@ -1,15 +1,21 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        def getNext(num):
+        def get_next(n):
             s = 0
-            while num > 0:
-                digit = num % 10
+            while n > 0:
+                digit = n % 10
+                n = n // 10
                 s += digit * digit
-                num = num // 10
             return s
-        fast = getNext(n)
-        slow = n
-        while fast != 1 and fast != slow:
-            fast = getNext(getNext(fast))
-            slow = getNext(slow)
-        return fast == 1
+        seen = set()
+        seen.add(n)
+        while True:
+            n = get_next(n)
+            if n == 1:
+                return True
+            if n in seen:
+                return False
+            else:
+                seen.add(n)
+        
+            
