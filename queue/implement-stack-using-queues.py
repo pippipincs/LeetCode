@@ -24,7 +24,7 @@ class MyStack:
                 self.q2.append(self.topv)
             return self.q1.popleft()
         else:
-            while len(self.q2) > 1:
+            while len(self.q2) > 2:
                 x = self.q2.popleft()
                 self.q1.append(x)
             if len(self.q2) == 2:
