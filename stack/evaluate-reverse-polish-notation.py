@@ -3,19 +3,16 @@ class Solution:
         stack = []
         for token in tokens:
             if token in ['+', '-', '*', '/']:
-                num2 = stack.pop()
-                num1 = stack.pop()
+                operand1 = stack.pop()
+                operand2 = stack.pop()
                 if token == '+':
-                    res = num1 + num2
+                    stack.append(operand1 + operand2)
                 elif token == '-':
-                    res = num1 - num2  
+                    stack.append(operand2 - operand1)
                 elif token == '*':
-                    res = num1 * num2
+                    stack.append(operand1 * operand2)
                 else:
-                    res = int(num1 / num2)
-                
-                stack.append(res)
-                continue
+                    stack.append(int(operand2 / operand1))
             else:
                 stack.append(int(token))
-        return stack[0]
+        return stack[-1]
