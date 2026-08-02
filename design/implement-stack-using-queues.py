@@ -29,7 +29,7 @@ class MyStack:
                 self.q1.append(x)
             if len(self.q2) == 2:
                 self.topv = self.q2.popleft()
-                self.q1.append(self.top)
+                self.q1.append(self.topv)
             return self.q2.popleft()
         
 
