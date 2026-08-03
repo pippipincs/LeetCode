@@ -3,7 +3,7 @@ class Solution:
         stack = []
         res = [0] * len(temperatures)
         for i in range(len(temperatures) - 1, -1, -1):
-            while stack and temperatures[stack[-1]] < temperatures[i]:
+            while stack and temperatures[stack[-1]] =< temperatures[i]:
                 stack.pop()
             if stack == []:
                 res[i] = 0
