@@ -5,6 +5,8 @@ class Solution:
             if ch in ['(', '{', '[']:
                 stack.append(ch)
                 continue
-            elif (ch == ')' and stack[-1] == '(') or (ch == '}' and stack[-1] == '{') or (ch == ']' and stack[-1] == '['):
+            elif stack and (ch == ')' and stack[-1] == '(') or (ch == '}' and stack[-1] == '{') or (ch == ']' and stack[-1] == '['):
                 stack.pop()
+            else:
+                stack.append(ch)
         return stack == []
