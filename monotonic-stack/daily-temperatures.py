@@ -5,7 +5,7 @@ class Solution:
         res = [0] * n
         for i in range(n - 1, -1, -1):
             temp = temperatures[i]
-            if temp > hottest:
+            if temp >= hottest:
                 hottest = temp
                 continue
             days = 1
