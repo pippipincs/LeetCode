@@ -6,16 +6,23 @@
 #         self.right = right
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        def symmetric(left, right):
-            if not left and not right:
-                return True
-            elif not left:
+        q = deque()
+        q.append(root.left)
+        q.append(root.right)
+        while q:
+            t1 = q.popleft()
+            t2 = q.popleft()
+            if not t1 and not t2:
+                continue
+            elif not t1:
                 return False
-            elif not right:
+            elif not t2:
                 return False
             else:
-                equal = left.val == right.val
-                s1 = symmetric(left.left, right.right)
-                s2 = symmetric(left.right, right.left)
-                return equal and s1 and s2
-        return symmetric(root.left, root.right)
+                if t1.val != t2.val:
+                    return False
+                q.append(t1.left)
+                q.append(t2.right)
+                q.append(t1.right)
+                q.append(t2.left)
+        return True
