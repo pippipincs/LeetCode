@@ -6,12 +6,12 @@ class Solution:
             while stack and heights[stack[-1]] > heights[i]:
                 curr = stack.pop()
                 h = heights[curr]
-                w = i - curr
+                w = i - stack[-1] - 1
                 max_area = max(max_area, h * w)
             stack.append(i)
         while stack:
             curr = stack.pop()
             h = heights[curr]
-            w = len(heights) - curr
+            w = len(heights) - stack[-1] - 1
             max_area = max(max_area, h * w)
         return max_area
