@@ -8,6 +8,7 @@ class Solution:
     def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
         res = 0
         def helper(node, isleft):
+            nonlocal res
             if not node.left and not node.right and isleft:
                 res += node.val
                 return
