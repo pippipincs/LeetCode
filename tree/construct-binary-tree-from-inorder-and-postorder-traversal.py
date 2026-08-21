@@ -9,12 +9,16 @@ class Solution:
         if inorder == []:
             return None
         v = postorder[-1]
-        i = inorder.index(v)
-        inorderleft = inorder[:i]
-        inorderright = inorder[i+1:]
-        postorderleft = postorder[:i]
-        postorderright = postorder[i:-1]
         node = TreeNode(v)
-        node.left = self.buildTree(inorderleft, postorderleft)
-        node.right = self.buildTree(inorderright, postorderright)
+        i = inorder.index(v)
+        left_in = inorder[:i]
+        right_in = inorder[i + 1 :]
+        len_left = len(left_in)
+        len_right = len(right_in)
+        left_post = postorder[:len_left]
+        right_post = postorder[len_left:-1]
+        left = self.buildTree(left_in, left_post)
+        right = self.buildTree(right_in, right_post)
+        node.left = left
+        node.right = right
         return node
