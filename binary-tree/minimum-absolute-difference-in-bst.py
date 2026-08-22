@@ -14,7 +14,7 @@ class Solution:
             nonlocal prev
             nonlocal res
             traverse(node.left)
-            if prev:
+            if prev is not None:
                 res = min(res, abs(prev - node.val))
             prev = node.val
             traverse(node.right)
