@@ -22,6 +22,7 @@ class Solution:
                 curr_num = num
                 curr_streak = 1
             if curr_streak > max_streak:
+                max_streak = curr_streak
                 ans = []
                 ans.append(curr_num)
             elif curr_streak == max_streak:
