@@ -9,11 +9,14 @@ class Solution:
         if not root:
             return None
         if root.val == key:
-            location = root.right
-            while location.left:
-                location = location.left
-            location.left = root.left
-            return root.right
+            if not root.right:
+                return root.left
+            else:
+                location = root.right
+                while location.left:
+                    location = location.left
+                location.left = root.left
+                return root.right
         if root.val > key:
             root.left = self.deleteNode(root.left, key)
         else:
