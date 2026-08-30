@@ -13,6 +13,8 @@ class Solution:
                 if collected[5] > 0 and collected[10] > 0:
                     collected[5] -= 1
                     collected[10] -= 1
+                elif collected[5] >= 3:
+                    collected[5] -= 3
                 else:
                     return False
         return True
