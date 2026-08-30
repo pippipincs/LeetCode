@@ -8,6 +8,8 @@ class Solution:
             nums[i] = -nums[i]
             k -= 1
             i += 1
+        nums.sort()
+        i = 0
         if i < len(nums) and k % 2 == 1:
             nums[i] = -nums[i]
         return sum(nums)
