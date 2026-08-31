@@ -6,6 +6,8 @@ class Solution:
         for start, end in points[1:]:
             if start <= prevend:
                 prevstart = start
+                if end < prevend:
+                    prevend = end
             else:
                 prevstart, prevend = start, end
                 arrows += 1
