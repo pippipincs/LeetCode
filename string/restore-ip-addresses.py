@@ -13,7 +13,7 @@ class Solution:
                 single = s[index : i + 1]
                 if int(single) < 0 or int(single) > 255:
                     continue
-                if single[0] == '0' and int(single) != 0:
+                if len(str(int(single))) != len(single):
                     continue
                 ip.append(single)
                 helper(ip, i + 1, k - 1)
