@@ -1,13 +1,15 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        res = []
+        res =[]
         def helper(subset, curr):
             if curr == len(nums):
                 res.append(subset.copy())
                 return
-            subset.append(nums[curr])
-            helper(subset, curr + 1)
-            subset.pop()
-            helper(subset, curr + 1)
+            for i in range(curr, len(nums)):
+                subset.append(nums[i])
+                helper(subset, i + 1)
+                subset.pop()
+            helper(subset, len(nums))
         helper([], 0)
         return res
+        
