@@ -18,5 +18,5 @@ class Solution:
                     if nextword not in visited:
                         visited.add(nextword)
                         queue.append((nextword, level + 1))
-                transformation[current[:i] + "*" + current[i + 1:]] = []
+                
         return 0
